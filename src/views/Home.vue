@@ -2,26 +2,19 @@
   <div id="app">
     <p class="tittle">Todo List</p>
     <div class="todo">
-      <!-- <label for="todo"></label> -->
       <input type="text" name="todo" id="todo" v-model="newTodo" />
       <button @click="insertTodo" id="add">追加</button>
     </div>
-    <div class="table">
-      <table>
-        <tr v-for="item in Todos" :key="item.id">
-          <td><input type="text" v-model="item.todo" /></td>
-          <td>
-            <button @click="updateTodo(item.id, item.todo)" id="update">
-              更新
-            </button>
-          </td>
-          <td>
-            <button @click="deleteTodo(item.id)" id="delete">
-              削除
-            </button>
-          </td>
-        </tr>
-      </table>
+    <div class="list" v-for="item in Todos" :key="item.id">
+      <input type="text" v-model="item.todo" />
+      <div class="lbtn">
+        <button @click="updateTodo(item.id, item.todo)" id="update">
+          更新
+        </button>
+        <button @click="deleteTodo(item.id)" id="delete">
+          削除
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +92,7 @@ input {
 }
 
 button {
-    text-align: left;
+    text-align: center;
     border: 2px solid;
     font-size: 12px;
     background-color: #fff;
@@ -125,6 +118,7 @@ button {
 #update {
     border-color: #fa9770;
     color: #fa9770;
+    margin-left: 5px;
 }
 
 #update:hover {
@@ -136,6 +130,7 @@ button {
 #delete {
     border-color: #71fadc;
     color: #71fadc;
+    margin-left: 5px;
 }
 
 #delete:hover {
@@ -154,6 +149,26 @@ table {
   font-size: 24px;
   margin: 0 0 10px 0;
 }
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.list {
+  display: flex;
+  margin: 5px 0;
+}
+
+.list .lbtn {
+  margin: 0 0 0 auto;
+}
+
+.list input {
+  width: 30%;
+}
+
 
 
 
